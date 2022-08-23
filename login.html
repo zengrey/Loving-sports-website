@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="css_files/login.css">
+    <script type="text/javascript" src="js_files/login.js"></script>
+
+    <script src="/js/jquery-3.3.1.min.js"></script>
+    <link href="/toastr/toastr.min.css" rel="stylesheet" type="text/css" />
+    <script src="/toastr/toastr.min.js"></script>
+    <script src="/js/jquery.cookie.js"></script>
+    <script src="/js/site.js?v=1.0"></script>
+</head>
+ 
+<body>
+<div id="login_frame">
+    <p id="image_logo"><img src="image/logo.jpg" style="cursor: pointer; width: 170px" onclick="goHome()"></p>
+ 
+    <form method="post" action="login.js">
+ 
+        <p><label class="label_input">User</label><input type="text" id="loginName" class="text_field"></p>
+        <p><label class="label_input">Password</label><input type="password" id="loginPwd" class="text_field"></p>
+        <p id="login_control">
+            <input type="button" id="btn_login" value="Login" onclick="login()">
+        </p>
+    </form>
+</div>
+
+</body>
+</html>

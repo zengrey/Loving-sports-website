@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="css_files/base.css" />
+	<link rel="stylesheet" href="css_files/detail.css" />
+	<link rel="stylesheet" href="IcoMoon-Free-master/IcoMoon-Free-master/Font/demo-files/demo.css" />
+	<title>Loving Sports</title>
+
+	<script src="/js/jquery-3.3.1.min.js"></script>
+	<link href="/toastr/toastr.min.css" rel="stylesheet" type="text/css" />
+	<script src="/toastr/toastr.min.js"></script>
+	<script src="/js/jquery.cookie.js"></script>
+	<script src="/js/site.js?v=1.1"></script>
+	<script>
+		loadProductDetail();
+	</script>
+	<style>
+        #productImg {
+            float: left;
+            width: 360px;
+            height: 350px;
+            border: 1px solid rgba(220, 220, 220,1);
+            background: url(../image/empty.png) no-repeat;
+            background-size: 100%;
+            margin: 20px 0 0 0;
+        }
+
+            #productImg img {
+                width: 360px;
+                height: 350px;
+            }
+
+        #description img{
+			max-width:880px;
+			margin-bottom:5px;
+        }
+	</style>
+	<script>
+		function addQty() {
+			var qty = parseInt($("#qty").val());
+			$("#qty").val(qty + 1);
+		}
+
+        function subQty() {
+			var qty = parseInt($("#qty").val());
+			if (qty > 1) {
+				$("#qty").val(qty - 1);
+            }
+		}
+
+		function addCart() {
+            var userName = getUserName();
+			if (userName == "" || userName == null) {
+				toastr.error("Please login!");
+			}
+			else {
+				var qty = parseInt($("#qty").val());
+				var id = getparastr("id");
+				addCartProduct(id, qty);
+			}
+        }
+	</script>
+</head>
+	<body>
+		<div class="nav_div">
+			<div class="d-center">
+				<div class="navL">
+					Welcome to Loving Sports!
+				</div>
+				<div class="navR" id="nowLoginName">
+				</div>
+			</div>
+		</div>
+
+		<div class="head d-center">
+			<div class="logo">
+				<img src="image/logo.jpg" width="150" height="100" usemap="#image-map">
+				<map name="image-map">
+					<area  href="index.html" coords="524,7,10,328" shape="rect">
+				</map>
+			</div>
+			<div class="head-search">
+				<input type="text" placeholder="What do you want?" id="key">
+				<button onclick="searchProduct()">Search</button>
+			</div>
+			<div class="shopCar" onclick="window.location.href= 'cart.html'">
+				<span class="car icon-cart"> </span>
+				<span><a href="cart.html">My cart</a> </span>
+				<span class="count" id="shoppingQty">0</span>
+			</div>
+		</div>
+
+		<div class="d-center">
+			<div class="top-type">
+				<ul>
+					<li><a href="list.html">Basketball</a></li>
+					<li><a href="#">Football</a></li>
+					<li><a href="#">Running</a></li>
+					<li><a href="#">Cycling</a></li>
+					<li><a href="#">Swimming</a></li>
+					<li><a href="#">Skating</a></li>
+					<li><a href="#">Exercise</a></li>
+					<li><a href="#">Climbing</a></li>
+				</ul>
+			</div>
+		</div>
+		<hr class="spacer-red" >
+
+        <div class="d-center" style="display:flex;">
+            <!--<div class="center-left">
+                <div class="goods-title">ALL</div>
+            </div>-->
+
+            <div id="fdjPart" style="border: 1px solid #ccc; width: 302px; float: left; margin-top: 13px; height: 385px;position:relative;">
+                <div id="small" style=" left: 1px; top: 47px;">
+                    <div id="shade"></div>
+                </div>
+                <div id="big" style="top: -3px; left: 325px; "></div>
+            </div>
+            <script type="text/javascript">
+                class MagnifyingGlass {
+                    constructor(newSmall, newBig, newShade) {
+                        this.small = newSmall;
+                        this.big = newBig;
+                        this.shade = newShade;
+                    }
+
+                    onmouseover() {
+                        let that = this;
+                        this.small.onmouseover = function (evt) {
+                            let e = evt || event;
+                            that.big.style.display = "block";
+                            that.shade.style.display = "block";
+                        }
+                    }
+
+                    onmouseout() {
+                        let that = this;
+                        this.small.onmouseout = function (evt) {
+                            let e = evt || event;
+                            that.big.style.display = "none";
+                            that.shade.style.display = "none";
+                        }
+                    }
+
+                    onmousemove() {
+                        let that = this;
+                        this.small.onmousemove = function (evt) {
+                            let e = evt || event;
+                            
+                            let left = e.pageX - this.offsetLeft - that.shade.offsetWidth / 2;
+                            let top = e.pageY - this.offsetTop - that.shade.offsetHeight / 2;
+
+                            left = e.pageX - this.offsetLeft - that.shade.offsetWidth / 2;
+                            top = e.pageY - this.offsetTop - that.shade.offsetHeight / 2;
+                             //left = e.pageX ;
+                            // top = e.pageY;
+                          //  console.log("e.pageX:" + e.pageX + ",e.pageY:" + e.pageY);
+                          //  console.log(",left:" + this.offsetLeft + "top:" + this.offsetTop);
+
+                            var parentLeft = $("#fdjPart").offset().left;
+                            var parentTop = $("#fdjPart").offset().top;
+
+                            left = e.pageX - parentLeft - that.shade.offsetWidth / 2;
+                            top = e.pageY - parentTop - that.shade.offsetHeight / 2 - 46;
+                            console.log("----------------" + parentTop);
+                            if (left < 0) {
+                                left = 0;
+                            }
+                            if (top < 0) {
+                                top = 0;
+                            }
+                            let maxLeft = that.small.offsetWidth - that.shade.offsetWidth;
+
+                            if (left > maxLeft) {
+                                left = maxLeft;
+                            }
+                            let maxTop = that.small.offsetHeight - that.shade.offsetHeight;
+
+                            if (top > maxTop) {
+                                top = maxTop;
+                            }
+
+                            that.shade.style.left = left + "px";
+                            that.shade.style.top = top + "px";
+
+
+                            ////////////
+                            let x = that.big.offsetWidth * left / that.shade.offsetWidth;
+                            let y = that.big.offsetHeight * top / that.shade.offsetHeight;
+
+                            console.log(y);
+                            that.big.style.backgroundPositionX = -x + "px";
+                            that.big.style.backgroundPositionY = -y + "px";
+                        }
+                    }
+                    eventBind() {
+                        this.onmouseover();
+                        this.onmouseout();
+                        this.onmousemove();
+                    }
+                }
+                let oSmall = document.getElementById("small");
+                let oBig = document.getElementById("big");
+                let oShade = document.getElementById("shade");
+                let oMg = new MagnifyingGlass(oSmall, oBig, oShade);
+                oMg.eventBind();
+            </script>
+
+
+
+
+            <div class="goods-detail">
+                <h3 id="produtName"></h3>
+                <p class="red-tip">join our loving sports family and receieve a discount !</p>
+                <div class="detail-red" style="height: 166px;">
+                    <div class="red-col-1">
+                        <div class="price-tag">Price</div>
+                        <div class="price">$<span id="price"></span></div>
+                    </div>
+                    <div class="red-col-1">
+                        <div class="price-tag">Stock</div>
+                        <div class="price"><span id="qtyStr"></span></div>
+                    </div>
+
+                    <div class="red-col-2">
+                        <div class="sale-tag">discount</div>
+                        <div class="sale-red-text"><a href="#">Buy more,Save more</a></div>
+                        <div class="sale-content">Buy 10 balls , receieve a 20% dicount, buy 20 balls, receieve a 45% discount@<a href="#specification">details</a></div>
+                    </div>
+                </div>
+
+                <div class="col-7" style="margin-top:253px;">
+                    <input type="text" value="1" id="qty" style="width: 43px; height: 42px; border-right: 0px; " />
+                    <div class="control-num">
+                        <div class="add" onclick="addQty()">+</div>
+                        <div class="sub" onclick="subQty()">-</div>
+                    </div>
+                    <button class="add-shopcar" onclick="addCart()">Add To Cart</button>
+                    <button class="add-shopcar" onclick="buy()">Buy</button>
+                </div>
+            </div>
+        </div>
+		
+		<div class="d-center">
+			<div class="goods-thumbnail">
+				<div class="thumbnail" ></div>
+				<div class="thumbnail"></div>
+				<div class="thumbnail"></div>
+			</div>
+		</div>
+		
+		<div class="d-center">
+			<div class="relative-div">
+				<div class="relative-title">
+					<button>Related</button>
+				</div>
+				<ul>
+					<li>
+						<a href="/detail.html?id=16263133-5893-4a29-9caf-498ad36e1b7c"><img src="image/basketball/basketball2.jpg" /></a>
+						<p><div>$30</div>Spalding Street Outdoor Basketball</p>
+					</li>
+					<li>
+						<a href="/detail.html?id=9b956825-ec82-4954-9fba-923391ca2425"><img src="image/basketball/topwadejpg.jpg" width="150px"></a>
+						<p>kyrie-low-4-basketball-shoes</p>
+						<div>$39</div>
+					</li>
+				</ul>
+			</div>
+			
+            <div class="detail-div">
+                <div class="detail-nav">
+                    <ul>
+                        <li onclick="showdes()">Description</li>
+                        <li onclick="showspe()">Specification</li>
+                        <li onclick="showcom()">Comments(3)</li>
+                    </ul>
+                </div>
+
+                <div id="description" class="goods-parame" style="display:">
+			
+                </div>
+                <div id="specification" style="display:none">
+                    <ul>
+				
+						
+                        <li><i style="font-weight:bold">Sport&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</i>Basketball</li>
+                        <br>
+                        <li><i style="font-weight:bold">Color&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</i>Black Gold</li>
+                        <br>
+                        <li><i style="font-weight:bold">Material&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</i>Rubber</li>
+                        <br>
+                        <li><i style="font-weight:bold">Item Diameter &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</i>29.5 Inches</li>
+                        <br>
+                        <li><i style="font-weight:bold">Brand&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</i>Senston</li>
+
+                    </ul>
+                </div>
+                <div id="comment" style="display:none">
+                    <div style="border:solid 1px;background-color:aqua">
+                        <h2> TOM SMITH</h2>
+                        <img src="image/running/2018-11-06t054310z-1334124005-rc1be15a8050-rtrmadp-3-people-sexiest-man.jpg" height="200px">
+                        <div style="margin-top:40px;font-size:20px;">
+                            "Best ball in the world,<br /> i played a lot with my kids, must give 5 stars!"</>
+                        </div>
+                        <div style="border:solid 1px;background-color:aquamarine">
+                            <h2> JIM JOBCOB</h2>
+                            <img src="image/running/wide_16x9.jpg" height="200px">
+
+                            <div style="margin-top:40px;font-size:20px">"I won't lie about it,<br /> i am not good at sports, but this give me the fun!"</div>
+                        </div>
+                    </div>
+                    <div style="border:solid 1px;background-color:bisque">
+                        <h2> AMY GRACE</h2>
+                        <img src="image/running/4249c8_942c6c60ab4e428da2c264b75c3f1409_mv2.jpg" height="200px">
+                        <div style="margin-top:40px;font-size:20px">"life is some time hard for me ,<br /> but i always find laughter with my friend and the sports!"</div>
+                    </div>
+                </div>
+      
+                    <script>
+                        var div1 = document.getElementById("description");
+                        var div2 = document.getElementById("specification");
+                        var div3 = document.getElementById("comment");
+                        function showdes() {
+                            div1.style.display = "";
+                            div2.style.display = "none";
+                            div3.style.display = "none";
+                        }
+                        function showspe() {
+                            div1.style.display = "none";
+                            div2.style.display = "";
+                            div3.style.display = "none";
+                        }
+                        function showcom() {
+                            div1.style.display = "none";
+                            div2.style.display = "none";
+                            div3.style.display = "";
+                        }
+                    </script>
+
+            </div>
+		</div>
+		
+
+
+	</body>
+</html>
+

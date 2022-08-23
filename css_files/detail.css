@@ -1,0 +1,723 @@
+.nav_div{
+	height: 30px;
+	background-color: rgba(241, 241, 241,1);
+	line-height: 30px;
+}
+
+.d-center{
+	width: 1200px;
+	margin: 0 auto;
+}
+
+.navL{
+	float: left;
+}
+
+.navR{
+	float: right;
+}
+
+.style-red{
+	color: rgba(200, 27, 39,1);
+}
+
+.navR li{
+	float: left;
+}
+
+.navR a{
+	border-right: 1px solid rgba(111, 111, 111,1);
+	padding: 0px 10px 0px 10px;
+}
+
+.navR .style-border-none{
+	border: 0px;
+}
+
+.navR .downArrow{
+	font-family: "icomoon";
+	font-size: 16px;
+	line-height: 25px;
+}
+
+.head{
+	height: 160px;
+}
+
+.logo{
+	width: 180px;
+	height: 60px;
+	margin: 10px 0 0 0px;
+	float: left;
+}
+
+.head-search{
+	width: 450px;
+	height: 60px;
+	float: left;	
+	margin: 20px 0 0 180px;
+}
+
+.head-search input{
+	width: 380px;
+	height: 50px;
+	border: 1.5px solid rgba(177, 25, 26,1);
+	font-size:20px;
+	padding: 0 0 0 10px;
+	float: left;
+}
+
+.head-search button{
+	width: 57px;
+	height: 53px;
+	font-size:15px;
+	border: 1.5px solid rgba(177, 25, 26,1);
+	background-color: rgba(177, 25, 26,1);
+	color: white;
+	float: left;
+}
+
+.shopCar{
+	width: 130px;
+	height: 40px;
+	float: left;
+	margin: 20px 0 0 200px;
+	border: 2px solid rgb(110, 83, 83);
+	background-color: rgba(247, 247, 247,1);
+	text-align: center;
+	line-height: 32px;
+	cursor: pointer;
+}
+
+.car{
+	font-family: "IcoMoon-Free";
+	color: rgba(196, 0, 0,1);
+	font-size:20px;
+}
+
+.count{
+	width: 25px;
+	height: 20px;
+	line-height: 20px;
+	position: relative;
+	display: block;
+	background-color: rgba(184, 0, 0,1);
+	color: white;
+	border-radius: 60% 50% 50% 0;
+	margin: -46px 0 0 110px;
+}
+
+
+.count{
+	width: 20px;
+	height: 16px;
+	line-height: 16px;
+	position: relative;
+	display: block;
+	background-color: rgba(196, 0, 0,1);
+	color: white;
+	border-radius: 50% 50% 50% 0;
+	margin: -43px 0 0 100px;
+}
+
+.d-center{
+	width: 1200px;
+	margin: 0px auto;
+}
+
+.spacer-red{
+	border: 1px solid rgba(200, 22, 35,1);
+}
+.center-left{
+	width:220px;
+	height: 45px;
+	margin: -45px 0 0 0;
+	color: white;
+	float: left;
+}
+
+.goods-title{
+	height: 43px;
+	background-color: rgba(177, 25, 26,1);
+	border: 1px solid rgba(177, 25, 26,1);
+	text-align: center;
+	line-height: 40px;
+	font-size: 17px;
+}
+
+.top-type{
+	width: 700px;
+	height: 40px;
+	margin: -45px 0 0 250px;
+	line-height: 40px;
+	font-size: 17px;
+	float: left;
+}
+
+.top-type ul{
+	float: left;
+}
+
+.top-type li{
+	float: left;
+	width: 85px;
+	text-align: center;
+}
+
+.red-top-title{
+	float: left;
+	width: 150px;
+	background-color: rgba(177, 25, 26,1);
+	text-align: center;
+	font-size: 14px;
+}
+
+.red-top-title a{
+	color: white;
+}
+
+.url-link-word{
+	float: left;
+	width: 100%;
+}
+
+.url-link-word li{
+	float: left;
+	margin: 5px 0 0 5px;
+}
+
+.goods-pic{
+	float: left;
+	width: 360px;
+	height: 350px;
+	border: 1px solid rgba(220, 220, 220,1);
+	background: url(../image/basketball/basketball.jpg) no-repeat;
+	background-size: 100%;
+	margin: 20px 0 0 0;
+}
+
+.goods-detail{
+	float: left;
+	width: 750px;
+	margin: 10px 0 0 30px;
+}
+
+.red-tip{
+	color: rgba(225, 34, 40,1);
+	font-size: 11px;
+	margin: 5px 0 10px 0;
+}
+
+.detail-red{
+	float: left;
+	width: 750px;
+	height: 120px;
+	background-color: rgba(200, 22, 35,0.1);
+}
+
+.red-col-1{
+	height: 50px;
+}
+
+.red-col-2{
+	height: 70px;
+}
+
+.price-tag{
+	float: left;
+	width: 50px;
+	height: 50px;
+	line-height: 50px;
+	text-align: center;
+}
+
+.price{
+	float: left;
+	height: 50px;
+	line-height: 50px;
+	text-align: center;
+	color: rgba(225, 34, 40,1);
+	font-size: 24px;
+	margin: 0 0 0 10px;
+}
+
+.down-price{
+	float: left;
+	height: 50px;
+	line-height: 55px;
+	color: rgba(225, 34, 40,1);
+	margin: 0 0 0 3px;
+}
+
+.total-appraise{
+	float: right;
+	height: 50px;
+	line-height: 55px;
+	margin: 0 5px 0 0;
+}
+
+.sale-tag{
+	float: left;
+	width: 50px;
+	height: 70px;
+	line-height: 30px;
+	text-align: center;
+}
+
+.sale-red-text{
+	float: left;
+	height: 70px;
+	line-height: 30px;
+	text-align: center;
+	margin: 0 0 0 10px;
+}
+
+.sale-red-text a{
+	background-color: rgba(200, 22, 35,1);
+	color: white;
+	padding: 1px;
+}
+
+.sale-content{
+	float: left;
+	height: 70px;
+	width: 390px;
+	line-height: 30px;
+	margin: 0 0 0 5px;
+}
+
+.col-3{
+	height: 30px;
+	margin: 130px 0 0 0;
+}
+
+.support-tag{
+	float: left;
+	height: 30px;
+	width: 60px;
+	line-height: 30px;
+	padding: 0 0 0 13px;
+}
+
+.support-text{
+	float: left;
+	height: 30px;
+	width: 350px;
+	line-height: 30px;
+	font-size: 11px;
+}
+
+.col-4{
+	height: 40px;
+	margin: 10px 0 0 0;
+}
+
+.choose-color-tag{
+	float: left;
+	height: 40px;
+	width: 60px;
+	line-height: 40px;
+	padding: 0 0 0 5px;
+	text-align: center;
+	margin: 0 5px 0 0;
+}
+
+.col-4 button{
+	float: left;
+	height: 40px;
+	width: 75px;
+	background-color: rgba(247, 247, 247,1);
+	color: rgba(102, 102, 102,1);
+	border: 1px solid rgba(0,0,0,0.1);
+	margin: 0 2px 0 0;
+}
+
+.col-4 button:hover,.col-4 button:focus{
+	border: 1px solid rgba(200, 22, 35,1);
+}
+
+.col-5{
+	height: 30px;
+	margin: 10px 0 0 0;
+}
+
+.vision-tag{
+	float: left;
+	height: 30px;
+	width: 60px;
+	line-height: 30px;
+	padding: 0 0 0 5px;
+	text-align: center;
+	margin: 0 5px 0 0;
+}
+
+.col-5 button{
+	float: left;
+	height: 30px;
+	width: 75px;
+	background-color: rgba(247, 247, 247,1);
+	color: rgba(102, 102, 102,1);
+	border: 1px solid rgba(0,0,0,0.1);
+	margin: 0 2px 0 0;
+}
+
+.col-5 button:hover,.col-5 button:focus{
+	border: 1px solid rgba(200, 22, 35,1);
+}
+
+.col-6{
+	height: 30px;
+	margin: 10px 0 0 0;
+}
+
+.buy-way-tag{
+	float: left;
+	height: 30px;
+	width: 60px;
+	line-height: 30px;
+	padding: 0 0 0 5px;
+	text-align: center;
+	margin: 0 5px 0 0;
+}
+
+.col-6 button{
+	float: left;
+	height: 30px;
+	width: 75px;
+	background-color: rgba(247, 247, 247,1);
+	color: rgba(102, 102, 102,1);
+	border: 1px solid rgba(0,0,0,0.1);
+	margin: 0 2px 0 0;
+}
+
+.col-6 button:hover,.col-6 button:focus{
+	border: 1px solid rgba(200, 22, 35,1);
+}
+
+.col-7{
+	height: 40px;
+	margin: 10px 0 0 0;
+}
+
+.col-7 input{
+	float: left;
+	height: 40px;
+	width: 30px;
+	border: 1px solid rgba(0,0,0,0.1);
+	margin: 0 0 0 12px;
+	text-align: center;
+}
+
+.control-num{
+	float: left;
+	width: 10px;
+	height: 40px;
+}
+
+.add,.sub{
+	float: left;
+	width: 15px;
+	height: 20px;
+	border: 1px solid rgba(0,0,0,0.1);
+	background-color: rgba(247, 247, 247,1);
+	cursor: pointer;
+	text-align:center;
+}
+
+.add-shopcar{
+	float: left;
+	height: 40px;
+	width: 120px;
+	background-color: rgba(200, 22, 35,1);
+	color: white;
+	margin: 0 0 0 15px;
+	border: 0px;
+	font-weight: bold;
+}
+
+#btn-choose{
+	border: 1px solid red;
+}
+
+.goods-thumbnail{
+	float: left;
+	height: 80px;
+	width: 100%;
+	margin: 30px 0 0 0;
+}
+
+.pre-btn,.next-btn{
+	float: left;
+	height: 40px;
+	width: 25px;
+	margin: 15px 0 0 20px;
+}
+
+.thumbnail{
+	float: left;
+	width: 45px;
+	height: 47px;
+	margin: 15px 0 0 15px;
+	background: url(../upload/b3_20190731_105344.png) no-repeat;
+	background-position: -3px -3px;
+	background-size: 55px;
+}
+
+.red-border{
+	border: 1px solid red;
+}
+
+.relative-div{
+	float: left;
+	height: 475px;
+	width: 200px;
+	border: 1px solid rgba(0,0,0,0.2);
+	margin: 50px 0 0 20px;
+}
+
+.relative-title{
+	float: left;
+	height: 30px;
+	width: 200px;
+}
+
+.relative-title button{
+	float: left;
+	height: 30px;
+	width: 80px;
+	color: rgba(0,0,0,0.6);
+	border-bottom: 1px solid rgba(0,0,0,0.2);
+	border-right: 1px solid rgba(0,0,0,0.2);
+	border-top: 0px;
+	border-left: 0px;
+}
+
+.relative-div li {
+	float: left;
+	width: 180px;
+	height: 220px;
+	margin: 0 0 0 10px;
+	border-bottom: 1px solid rgba(177, 177, 177,1);
+}
+
+.relative-div li div{
+	font-weight: bold;
+	margin: 5px 0 5px 0;
+}
+
+.relative-div li button{
+	height: 25px;
+	width: 90px;
+	margin: 5px 0 0 45px;
+	border: 1px solid rgba(177, 177, 177,1);
+	color: rgba(0,0,0,0.7);
+	font-size: 12px;
+}
+.relative-div img{
+	max-height:60%;
+	position:relative;
+
+
+}
+.detail-div{
+	float: left;
+	width: 900px;
+	height: 550px;
+	margin: 50px 0 0 20px;
+}
+
+
+.detail-nav{
+	float: left;
+	width: 100%;
+	background-color: rgba(241, 241, 241,1);
+	border: 1px solid rgba(0,0,0,0.1);
+}
+
+.detail-nav li{
+	float: left;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	padding: 0 20px 0 20px;
+	cursor: pointer;
+}
+
+.detail-nav li:hover {
+	background-color: rgba(200, 22, 35,1);
+}
+
+.goods-parame{
+	float: left;
+	width: 100%;
+	margin: 10px 0 0 10px;
+}
+
+.look-more{
+	float: left;
+	width: 730px;
+	text-align: right;
+	font-weight: bold;
+}
+
+.goods-pics li{
+	float: left;
+}
+
+.downArrow{
+	font-family: "icomoon";
+	font-size: 16px;
+	line-height: 25px;
+}
+
+.goods-pics{
+	float: left;
+	width: 900px;
+}
+
+.goods-pics img{
+	float: left;
+	width: 900px;
+}
+
+.bottom{
+	float: left;
+	height: 300px;
+	width: 100%;
+	background-color: rgba(245, 245, 245,1);
+	margin: 50px 0 0 0;
+}
+
+.bottom-top{
+	float: left;
+	height: 100px;
+	width: 100%;
+	background-color: rgba(245, 245, 245,1);
+	border-bottom: 1px solid rgba(217, 217, 217,1);
+}
+
+.bottom-top li{
+	width: 180px;
+	float: left;
+	margin: 20px 55px 0 55px;
+}
+
+.ensure-pic{
+	width: 60px;
+	height: 50px;
+	background-color: red;
+	background: url(../img/icons.png) no-repeat;
+	background-position: -253px -3px;
+	float: left;
+}
+
+.bottom-top ul{
+	height: 100px;
+	border-bottom: 1px solid rgba(217, 217, 217,1);
+}
+
+.bottom-top li h3{
+	float: left;
+}
+
+.bottom-top li span{
+	float: left;
+}
+
+.bottom-center{
+	float: left;
+	height: 180px;
+	width: 100%;
+	background-color: rgba(245, 245, 245,1);
+	border-bottom: 1px solid rgba(211, 211, 211,1);
+}
+
+.help-div{
+	width: 100px;
+	margin: 10px 30px 0 60px;
+	float: left;
+}
+
+.help-div p{
+	font-size: 17px;
+}
+
+.help-code{
+	float: right;
+	width: 100px;
+	margin: 10px 50px 0 0;
+}
+
+.help-code p{
+	font-size: 16px;
+	text-align: center;
+}
+
+.help-code div{
+	text-align: center;
+}
+
+.readme-div{
+	float: left;
+	height: 120px;
+	width: 100%;
+	background-color: rgba(245, 245, 245,1);
+	border-bottom: 1px solid rgba(211, 211, 211,1);
+}
+
+
+.readme-div ul{
+	float: left;
+	margin: 20px 0 20px 220px;
+}
+
+.readme-div li{
+	float: left;
+	margin: 0 2px 0 2px;
+}
+
+.readme-div p{
+	float: left;
+	width: 100%;
+	text-align: center;
+}
+
+.item-link{
+	color: white;
+	transition: all .5s;
+}
+
+
+
+
+
+
+
+#small {
+	width: 300px;
+	height: 300px;
+	background-size: 300px 300px;
+	position: absolute;
+	left: 100px;
+	top: 100px;
+}
+
+#shade {
+	width: 100px;
+	height: 100px;
+	background: pink;
+	position: absolute;
+	opacity: 0.3;
+	cursor: move;
+	display: none;
+}
+
+#big {
+	width: 400px;
+	height: 400px;
+	background-size: 1200px 1200px;
+	position: absolute;
+	top: 100px;
+	left: 450px;
+	display: none;
+}

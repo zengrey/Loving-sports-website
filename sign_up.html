@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Sign up</title>
+    <link rel="stylesheet" type="text/css" href="css_files/sign_up.css">
+
+    <script src="/js/jquery-3.3.1.min.js"></script>
+    <link href="/toastr/toastr.min.css" rel="stylesheet" type="text/css" />
+    <script src="/toastr/toastr.min.js"></script>
+    <script src="/js/jquery.cookie.js"></script>
+    <script src="/js/site.js?v=1.0"></script>
+</head>
+
+<body>
+    <div id="container">
+        <h1>New user</h1>
+        <hr />
+        <form>
+            <label>
+                User name：
+                <input type="text" name="userName" id="userName" placeholder="Set your user name" required />
+            </label><br />
+            <label>
+                Password：
+                <input type="password" name="password" id="password" placeholder="Set your password" required />
+            </label><br />
+            <label>
+                Confirmation:
+                <input type="password" name="password2" id="password2" placeholder="Confirm your password" required />
+            </label><br />
+            <label>
+                Last name：
+                <input type="text" name="lastName" id="lastName" placeholder="Last name" required />
+            </label><br />
+            <label>First Name：</label><input type="text" name="firstName" id="firstName" placeholder="First name" required /><br />
+            <label>Email:</label> <input type="email" name="email" id="email" placeholder="Your email" required /><br />
+
+            <button type="button" onclick="register()"> Submit </button>
+        </form>
+    </div>
+</body>
+</html>
+

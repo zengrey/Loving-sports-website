@@ -1,0 +1,41 @@
+body {
+    background-image: url("../image/login_bg.jpeg");
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+	#container{
+		background:white;
+		color:#317fce;
+		padding:15px;
+		margin:100px auto 0px;
+		width:600px;
+		text-align:center;
+		font-family:"arial,'Times New Roman', Times,  sans-serif";
+		box-shadow:10px 10px 15px  black  ;	
+	}
+
+	hr{width:90%;
+	border:#2e2bee 1px  solid  ;
+	margin-bottom:15px;
+	}
+
+	input{
+        margin-left:20px;
+        width:180px;
+	height:20px;
+	margin:5px;
+	font-size:16px;
+	font-family:"arial,'Times New Roman', Times,  sans-serif;";}
+
+	button{width:120px;
+	height:40px;
+	background:#317fce;
+	border:0px;
+	color:white;
+	margin:10px;
+	font-size:18px;
+	font-family:"arial,'Times New Roman', Times,  sans-serif;";
+	font-weight:bold;}
+    
+	button:hover
+    {background:#23abaf;}

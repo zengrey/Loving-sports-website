@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css_files/base.css" />
+    <link rel="stylesheet" href="css_files/index.css" />
+    <link rel="stylesheet" href="IcoMoon-Free-master/IcoMoon-Free-master/Font/demo-files/demo.css" />
+    <title>Loving Sports</title>
+
+    <script src="/js/jquery-3.3.1.min.js"></script>
+    <link href="/toastr/toastr.min.css" rel="stylesheet" type="text/css" />
+    <script src="/toastr/toastr.min.js"></script>
+    <script src="/js/jquery.cookie.js"></script>
+    <script src="/js/site.js?v=1.0"></script>
+</head>
+<body>
+    <div class="nav_div">
+        <div class="d-center">
+            <div class="navL">
+                Welcome to Loving Sports!
+            </div>
+            <div class="navR" id="nowLoginName">
+
+            </div>
+        </div>
+    </div>
+
+    <div class="head d-center">
+        <div class="logo">
+            <img src="image/logo.jpg" width="150" height="100" usemap="#image-map">
+            <map name="image-map">
+                <area href="index.html" coords="524,7,10,328" shape="rect">
+            </map>
+        </div>
+        <div class="head-search">
+            <input type="text" placeholder="What do you want?" id="key">
+            <button onclick="searchProduct()">Search</button>
+        </div>
+        <div class="shopCar" onclick="window.location.href= 'cart.html'">
+            <span class="car icon-cart"> </span>
+            <span><a href="cart.html">My cart</a> </span>
+            <span class="count" id="shoppingQty">0</span>
+        </div>
+    </div>
+
+    <div class="d-center">
+
+        <div class="top-type">
+            <ul>
+
+                <li><a href="list.html">Basketball</a></li>
+                <li><a href="#">Football</a></li>
+                <li><a href="#">Running</a></li>
+                <li><a href="#">Cycling</a></li>
+                <li><a href="#">Swimming</a></li>
+                <li><a href="#">Skating</a></li>
+                <li><a href="#">Exercise</a></li>
+                <li><a href="#">Climbing</a></li>
+            </ul>
+        </div>
+    </div>
+    <hr class="spacer-red">
+    <div style="width:40px;float:left">
+        <img src="image/Red_Color.jpg" width="100px" height="1300px" />
+    </div>
+    <div class="d-center">
+        <div class="center-left">
+            <div class="goods-title">ALL</div>
+        </div>
+        <div id="butong_net_left" style="overflow:hidden;width:320px;height:440px;float:left" align="left">
+            <table cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                    <td id="butong_net_left1" valign="top" align="center">
+                        <table cellpadding="2" cellspacing="0" border="0">
+                            <tr align="center">
+                                <td> <img src="image/basketball/usa_today_10428001.0.jpg" height="440px" ></td>
+                                <td> <img src="image/basketball/JPG-7U1005_S_angle.jpg"  height="440px"></td>
+                                <td> <img src="image/basketball/topwadejpg.jpg" height="440px"></td>
+                                <td> <img src="image/basketball/Spalding_Basketball.jpg" height="440px"></td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td id="butong_net_left2" valign="top"></td>
+                </tr>
+            </table>
+        </div>
+        <script>
+            var speed = 10//faster when the number is small
+            butong_net_left2.innerHTML = butong_net_left1.innerHTML
+            function Marquee3() {
+                if (butong_net_left2.offsetWidth - butong_net_left.scrollLeft <= 0)
+                    butong_net_left.scrollLeft -= butong_net_left1.offsetWidth
+                else {
+                    butong_net_left.scrollLeft++
+                }
+            }
+
+            var MyMar3 = setInterval(Marquee3, speed)
+            butong_net_left.οnmοuseοver = function () { clearInterval(MyMar3) }
+            butong_net_left.οnmοuseοut = function () { MyMar3 = setInterval(Marquee3, speed) }
+        </script>
+        <div id="wrap">
+            <div id="box" >
+                <a  href="/detail.html?id=4c521752-bb90-4b07-9c7b-fbd125bfca9c"><img src="image/basketball/basketball_pump.jpg"></a>
+                <button class="leftBut"><</button>
+                <button class="rightBut">></button>
+                <div class="focus-list">
+                    <span style="background-color: orange;"></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+        <script>
+            var imgArr = ['image/basketball/basketball_pump.jpg', 'image/basketball/basketball_shoes.jpg', 'image/basketball/basketball_shoes2.jpg', 'image/basketball/basketball-1.jpg'];
+            var hrefArr = ["/detail.html?id=4c521752-bb90-4b07-9c7b-fbd125bfca9c", '/detail.html?id=b36e3311-69b5-4bfe-8e24-89cb69d9de6b', '/detail.html?id=988e1593-d035-464c-a47a-08eea2535b6b', '/detail.html?id=de42f30e-7d90-45f8-9822-981a6012fa2b'];
+            var oWrap = document.getElementById('wrap');
+            var oPic = oWrap.getElementsByTagName('img')[0];
+            var jump = oWrap.getElementsByTagName('a')[0];
+            var leftBtn = oWrap.getElementsByTagName('button')[0];
+            var rightBtn = oWrap.getElementsByTagName('button')[1];
+            var focusList = oWrap.getElementsByClassName('focus-list')[0];
+            var spans = focusList.getElementsByTagName('span');
+            var step = 0;
+           
+            rightBtn.onclick = function () {
+                step++;
+
+                if (step === 4) {
+                    step = 0;
+
+                }
+                oPic.src = imgArr[step];
+                jump.href = hrefArr[step];
+                focusFllow();
+
+            }
+            leftBtn.onclick = function () {
+                step--;
+
+                if (step === -1) {
+
+                    step = 3;
+
+                }
+                oPic.src = imgArr[step];
+                jump.href = hrefArr[step];
+                focusFllow();
+
+            }
+            function focusFllow() {
+                for (var i = 0; i < spans.length; i++) {
+                    spans[i].style.backgroundColor = "#fff";
+
+                }
+                spans[step].style.backgroundColor = 'orange';
+
+            }
+        </script>
+        <div id="butong_net_right" style="overflow:hidden;width:320px;height:440px;float:left">
+            <table cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                    <td id="butong_net_right1" valign="top" align="center">
+                        <table cellpadding="2" cellspacing="0" border="0">
+                            <tr align="center">
+                                <td><img src="image/basketball/original.jpg" height="440px"></td>
+                                <td><img src="image/basketball/Nike-Kyrie-8-1024x672.jpg" height="440px"></td>
+                                <td><img src="image/basketball/nike-basketball-mobile.jpg" height="440px"></td>
+                                <td> <img src="image/basketball/photo-1602033693387-3531914e7185.jpg" height="440px"></td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td id="butong_net_right2" valign="top"></td>
+                </tr>
+            </table>
+        </div>
+        <script>
+            var speed = 20//faster when the number is small
+            butong_net_right2.innerHTML = butong_net_right1.innerHTML
+            function Marquee4() {
+                if (butong_net_right.scrollLeft <= 0)
+                    butong_net_right.scrollLeft += butong_net_right2.offsetWidth
+                else {
+                    butong_net_right.scrollLeft--
+                }
+            }
+            var MyMar4 = setInterval(Marquee4, speed)
+            butong_net_right.οnmοuseοver = function () { clearInterval(MyMar4) }
+            butong_net_right.οnmοuseοut = function () { MyMar4 = setInterval(Marquee4, speed) }
+        </script>
+    </div>
+    <div style="width:40px;float:right;margin-right:70px">
+        <img src="image/gsc-217-light-orange_18.jpg" width="120px" height="1300px">
+    </div>
+
+    <div class="d-center">
+        <div class="electric">
+            <h2>Hot</h2>
+        </div>
+        <div class="electric-column-1" >
+            <a href="/detail.html?id=3ac8770a-eff3-40fa-b5ce-223b67bc0581"><img src="image/basketball/basketball_hoop.jpg"></a>
+        </div>
+
+        <div class="electric-column-2">
+           <img src="image/basketball/kyrie-low-4-basketball-shoes-zwSncK.jpg">
+        </div>
+
+        <div class="electric-column-3">
+            <img src="image/basketball/nike-basketball-mobile.jpg">
+            <a href="/detail.html?id=89c5a7e2-22c7-4b9c-824f-f0d3bea61c59"><img src="image/basketball/Nike-Kyrie-8-1024x672.jpg"></a>
+        </div>
+        <div class="electric-column-4">
+            <img src="image/cycling/bike.jpg" />
+        </div>
+
+        <div class="electric-column-5">
+            <img src="image/swimming/swimming_googles.jpg" />
+            <img src="image/exercise/exercise_bike.jpg" />
+        </div>
+    </div>
+
+    <div class="d-center">
+        <div class="electric">
+            <h2>Guess you like</h2>
+        </div>
+
+        <div class="electric-column-1">
+            <a href="/detail.html?id=988e1593-d035-464c-a47a-08eea2535b6b">  <img src="image/basketball/basketball_shoes2.jpg"></a>
+            <a href="/detail.html?id=16263133-5893-4a29-9caf-498ad36e1b7c"><img src="image/basketball/basketball2.jpg"></a>
+        </div>
+
+        <div class="electric-column-2">
+            <a href="/detail.html?id=0830f868-61a9-467b-b596-8e4407c4a517"><img src="image/basketball/basketball.jpg" />
+        </div></a>
+
+        <div class="electric-column-3">
+           <a href="/detail.html?id=4c521752-bb90-4b07-9c7b-fbd125bfca9c"><img src="image/basketball/basketball_pump.jpg" /></a> 
+            <img src="image/running/runningshoes.jpg" />
+        </div>
+        <div class="electric-column-4">
+            <img src="image/basketball/IMG_4898-2-scaled.jpg" />
+        </div>
+
+        <div class="electric-column-5">
+            <a href="/detail.html?id=9b956825-ec82-4954-9fba-923391ca2425"><img src="image/basketball/topwadejpg.jpg"></a>
+            <img src="image/basketball/JPG-7U1005_S_angle.jpg" />
+        </div>
+    </div>
+  
+</body>
+</html>

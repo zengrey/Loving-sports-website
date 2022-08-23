@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Cart</title>
+    <link rel="stylesheet" href="css_files/base.css" />
+    <link rel="stylesheet" href="css_files/list.css" />
+    <link rel="stylesheet" href="css_files/cart.css">
+
+    <script src="/js/jquery-3.3.1.min.js"></script>
+    <link href="/toastr/toastr.min.css" rel="stylesheet" type="text/css" />
+    <script src="/toastr/toastr.min.js"></script>
+    <script src="/js/jquery.cookie.js"></script>
+    <script src="/js/site.js?v=1.0"></script>
+    <script>
+        $(function () {
+            loadCartProductList();
+           
+        });
+
+        function jinTing() {
+            $("input:checkbox").click(function () {
+               
+                var id = $(this).attr("id");
+                if (id == "all") { 
+                    var checked = $(this).prop("checked");
+                    console.log("checked=" + checked);
+                    $("input:checkbox").each(function () {
+                        var cId = $(this).attr("id");
+                        if (cId != "all") {
+                            $(this).prop("checked", checked);
+                        }
+                    })
+                }
+
+                heji();
+            });
+        }
+
+        function loadCartProductList() {
+            var cart = $.cookie("cart");
+            if (cart != "" && cart != null) { // Judge whether cookie exists
+                var cartNew = JSON.parse(cart);
+                console.log(cartNew.goods);
+                $.ajax({
+                    type: "POST",
+                    url: "/Product/GetCartData",
+                    dataType: "json",
+                    data: {
+                        "cart": JSON.stringify(cartNew.goods)
+                    },
+                    success: function (result) {
+                        console.log(result);
+
+                        var htmlStr = "";
+                        for (var h = 0; h < result.length; h++) {
+                            var item = result[h];
+                            totalPrice += item.totalPrice;
+                            htmlStr += "<div class='cart-detail' >";
+                            htmlStr += "<input type='hidden' value='" + item.goodId + "'>";
+                            htmlStr += "<input type='checkbox'>";
+                            htmlStr += "<div class='cart-title'>";
+                            htmlStr += "<img src='" + item.productImg + "'>";
+                            htmlStr += "<div style='padding-left:2px;'>";
+                            htmlStr += "<a href='detail.html?id=" + item.goodId + "'><i>Basketball</i> '" + item.productName + "'</a>";
+                            htmlStr += "</div>";
+                            htmlStr += "</div>";
+                            htmlStr += "<div class='cart-price'>$<span class='productPrice'>" + item.price + "</span></div>";
+                            htmlStr += "<div class='cart-number'>";
+
+                            htmlStr += "<span class='sub' onclick='sub(this)'>-</span> <input type='text' class='qty' value='" + item.qty + "'><span class='plus' onclick='plus(this)'>+</span>";
+                            htmlStr += "</div>";
+                            htmlStr += "<div class='cart-subtotal'>$<span class='totalPrice'>" + item.totalPrice + "</div>";
+                            htmlStr += "<div class='cart-oprate' onclick='removeProduct(this)'>Remove</div>";
+                            htmlStr += "</div>";
+                        }
+                        $("#cartList").html(htmlStr);
+                        $("#totalPrice").html("0");
+
+                        jinTing();
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        toastr.error("error");
+                    }
+                });
+            }
+            else {
+                toastr.error("The current shopping cart is empty！");
+            }
+        }
+
+        function sub(_this) {
+            //console.log($(parentDiv).html());
+            var list = $(_this).parent().parent().find("input:hidden");
+            var id = $(list[0]).val();
+
+            var qtyBox = $($(_this).parent().parent().find("input:text"));
+            var qty = parseInt($(qtyBox).val());
+            //// console.log($(parentDiv).find("input").length);
+            console.log("id=" + id + ",list.len=" + list.length + ",qty=" + qty);
+
+            if (qty > 1) {
+                qty = qty - 1;
+                $(qtyBox).val(qty);
+
+                var totalPrice = $($(_this).parent().parent().find(".totalPrice"));
+                var productPrice = $($(_this).parent().parent().find(".productPrice"));
+                var price = parseFloat($(productPrice).html());
+                $(totalPrice).html(price * qty);
+                heji();
+            }
+        }
+
+        function plus(_this) {
+            //console.log($(parentDiv).html());
+            var list = $(_this).parent().parent().find("input:hidden");
+            var id = $(list[0]).val();
+
+            var qtyBox = $($(_this).parent().parent().find("input:text"));
+            var qty = parseInt($(qtyBox).val());
+            //// console.log($(parentDiv).find("input").length);
+            console.log("id=" + id + ",list.len=" + list.length + ",qty=" + qty);
+
+            qty = qty + 1;
+            $(qtyBox).val(qty);
+
+            var totalPrice = $($(_this).parent().parent().find(".totalPrice"));
+            var productPrice = $($(_this).parent().parent().find(".productPrice"));
+            var price = parseFloat($(productPrice).html());
+            $(totalPrice).html(price * qty);
+            heji();
+        }
+
+        function heji() {
+            var itemList = $("#cartList").find(".cart-detail");
+            var zong = 0;
+            for (var i = 0; i < itemList.length; i++) {
+                var checkbox = $($(itemList[i]).find("input:checkbox"));
+                if ($(checkbox).prop("checked")) {
+                    var qtyBox = $($(itemList[i]).find("input:text"));
+                    var qty = parseInt($(qtyBox).val());
+
+                    var productPrice = $($(itemList[i]).find(".productPrice"));
+                    var price = parseFloat($(productPrice).html());
+
+                    zong += qty * price;
+                }
+            }
+
+            $("#totalPrice").html(zong);
+        }
+
+        function settlement() {
+            var userName = getUserName();
+            if (userName == "" || userName == null) {
+                toastr.error("Please login!");
+            }
+            else {
+                var itemList = $("#cartList").find(".cart-detail");
+                var productList = [];
+                var zong = 0;
+                for (var i = 0; i < itemList.length; i++) {
+                    var box = $($(itemList[i]).find("input:checkbox"));
+
+                    if ($(box).is(':checked')) {
+                        var idBox = $($(itemList[i]).find("input:hidden"));
+
+                        var qtyBox = $($(itemList[i]).find("input:text"));
+                        var qty = parseInt($(qtyBox).val());
+
+                        var productPrice = $($(itemList[i]).find(".productPrice"));
+                        var price = parseFloat($(productPrice).html());
+
+                        zong += qty * price;
+                        productList.push({
+                            "id": $(idBox).val(), "qty": qty
+                        });
+                    }
+                }
+
+                console.log("Total price=" + zong);
+                console.log("Products=" + JSON.stringify(productList));
+                if (productList.length > 0) {
+                    $.ajax({
+                        type: "POST",
+                        url: "/Product/Settlement",
+                        dataType: "json",
+                        data: {
+                            "totalPrice": zong,
+                            "productList": JSON.stringify(productList),
+                            "userName": getUserName()
+                        },
+                        success: function (result) {
+                            console.log(result);
+
+                            if (result.success) {
+                                delCart(productList);
+                                alert("Settlement succeeded！");
+                                goHome();
+                            }
+                            else {
+                                toastr.error(result.message);
+                            }
+                        },
+                        error: function (XMLHttpRequest, textStatus, errorThrown) {
+                            toastr.error("error");
+                        }
+                    });
+                }
+                else {
+                    toastr.error("Please select the products to be settled!");
+                }
+            }
+        }
+
+        function delCart(productList) {
+            var cart = $.cookie("cart");
+            if (cart != "" && cart != null) { // Judge whether cookie exists
+                cart = JSON.parse(cart);
+                for (var p = 0; p < productList.length; p++) {
+                    for (var g = 0; g < cart.goods.length; g++) {
+
+                        if (cart.goods[g].goodId == productList[p].id) {
+                            cart.goods.splice(g, 1);
+                            break;
+                        }
+                    }
+                }
+                
+                $.cookie("cart", JSON.stringify(cart));
+            }
+        }
+
+        function removeProduct(_this) {
+            var pid = $(_this).parent().find("input:hidden").val();
+            console.log("pid=" + pid);
+            var cart = $.cookie("cart");
+            if (cart != "" && cart != null) { // Judge whether cookie exists
+                cart = JSON.parse(cart);
+                for (var g = 0; g < cart.goods.length; g++) {
+
+                    if (cart.goods[g].goodId == pid) {
+                        cart.goods.splice(g, 1);
+                        break;
+                    }
+                }
+
+                $.cookie("cart", JSON.stringify(cart));
+            }
+            location.reload();
+        }
+    </script>
+    <style>
+        .cart-oprate{
+            cursor:pointer;
+        }
+
+        .cart-detail {
+            display: flex;
+        }
+
+        .cart-title img {
+            width: 60px;
+            float: left;
+        }
+
+        .cart-number .qty {
+            width: 46px;
+            line-height: 20px;
+            border: 1px solid #aaa;
+            text-align: center;
+        }
+
+        .sub {
+            width: 20px;
+            height: 20px;
+            border: 1px solid #aaa;
+            font-size: 15px;
+            text-align: center;
+            display: inline-block;
+            margin-right: -5px;
+            border-right: 0px;
+            cursor: pointer;
+        }
+
+        .plus {
+            width: 20px;
+            height: 20px;
+            border: 1px solid #aaa;
+            font-size: 15px;
+            text-align: center;
+            display: inline-block;
+            margin-right: -5px;
+            border-left: 0px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="nav_div">
+        <div class="d-center">
+            <div class="navL">
+                Welcome to Loving Sports!
+            </div>
+            <div class="navR" id="nowLoginName">
+            </div>
+        </div>
+    </div>
+
+    <div class="head d-center">
+        <div class="logo">
+            <img src="image/logo.jpg" width="150" height="100" usemap="#image-map">
+            <map name="image-map">
+                <area href="index.html" coords="524,7,10,328" shape="rect">
+            </map>
+        </div>
+        <div class="head-search">
+            <input type="text" placeholder="What do you want?" id="key">
+            <button onclick="searchProduct()">Search</button>
+        </div>
+        <div class="shopCar" onclick="window.location.href= 'cart.html'">
+            <span class="car icon-cart"> </span>
+            <span><a href="cart.html">My cart</a> </span>
+            <span class="count" id="shoppingQty">0</span>
+        </div>
+    </div>
+
+    <div class="d-center page-title">
+        My Shopping Cart
+    </div>
+
+    <hr class="red-line">
+
+
+    <div class="public-shop-cart">
+        <div class="content">
+            <span>All items</span>
+            <div class="cart-title">
+                <span>
+                    <input type="checkbox" id="all">
+                    <label for="all">Select all</label>
+                </span>
+                <span>Item</span>
+                <span>Unit price</span>
+                <span>Quantity</span>
+                <span>Subtotal</span>
+                <span>Operation</span>
+            </div>
+
+            <div id="cartList">
+            </div>
+
+            <div class="cart-btn"><span>Total：</span><span> $<span id="totalPrice">0</span> </span><button class="btn" onclick="settlement()">Settle Accounts</button></div>
+        </div>
+    </div>
+
+</body>
+</html>
